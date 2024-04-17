@@ -20,9 +20,11 @@ We can notice from the two graphs above that we have a “sharp” decrease
 in crashes and deaths
 
 We instead have an increase in Petrol consumption for Azzurropoli
+
 <img src="Introduction_files/figure-gfm/Plotting Petrol -1.png" style="display: block; margin: auto;" />
 
 While for the other variables we have same behaviour
+
 <img src="Introduction_files/figure-gfm/Plotting -1.png" style="display: block; margin: auto;" /><img src="Introduction_files/figure-gfm/Plotting -2.png" style="display: block; margin: auto;" />
 
 Checking that the population density is constant…
