@@ -1,0 +1,479 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={analysis},
+  pdfauthor={Luca Rossi},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{analysis}
+\author{Luca Rossi}
+\date{2024-02-15}
+
+\begin{document}
+\maketitle
+
+\hypertarget{analyis}{%
+\section{Analyis}\label{analyis}}
+
+\hypertarget{city-level}{%
+\subsection{City Level}\label{city-level}}
+
+According to the analysis before the towns identified with numbers:
+1,2,6 are similar for carCrash and pedestrianDeath, or in another way,
+they have parallel trends before the treatment
+
+\hypertarget{diff-in-diff}{%
+\subsubsection{Diff-in-Diff}\label{diff-in-diff}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# we create the variable treated if city is treated}
+
+\NormalTok{traffic\_city }\OtherTok{\textless{}{-}}\NormalTok{ traffic\_city }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{treated =} \FunctionTok{if\_else}\NormalTok{(city }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+
+\NormalTok{traffic\_city }\OtherTok{\textless{}{-}}\NormalTok{ traffic\_city }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{after =} \FunctionTok{if\_else}\NormalTok{(date }\SpecialCharTok{\textgreater{}=} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2021{-}06{-}01"}\NormalTok{),}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+
+\CommentTok{\# similar towns subset}
+\NormalTok{similar\_towns }\OtherTok{\textless{}{-}}\FunctionTok{subset}\NormalTok{(traffic\_city,city }\SpecialCharTok{\%in\%}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+We create a dummy variable called treated that takes values 1 if the
+city is city 1 and 0 otherwise
+
+Let's take pedestrianDeath as independent variable and write a simple
+difference-in-difference regression
+
+\[ Y = \beta_0 + \beta_1 \times \text{Treatment} + \beta_2 \times \text{Post} + \beta_3 \times \text{Treatment} \times \text{Post} + \epsilon \]
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y\) is the dependent variable,
+\item
+  \(\beta_0\) is the intercept,
+\item
+  \(\beta_1\) represents the effect of the treatment (before and after),
+\item
+  \(\beta_2\) captures the time effect (difference between pre and
+  post),
+\item
+  \(\beta_3\) is the interaction term that provides the
+  Difference-in-Differences estimator (the effect of the treatment after
+  the treatment relative to before),
+\item
+  \(\text{Treatment}\) is a dummy variable indicating whether the
+  observation is in the treatment group or control group,
+\item
+  \(\text{Post}\) is a dummy variable indicating the post-treatment
+  period,
+\item
+  \(\epsilon\) represents the error term, capturing all other factors
+  affecting \(Y\) not included in the model.
+\end{itemize}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+& city\_regression\_pe.. \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dependent Var.: & pedestrianDeath \\
+& \\
+Constant & 0.0004*** (6.07e-6) \\
+after & -2.5e-6 (8.58e-6) \\
+treated & 4.84e-7 (1.05e-5) \\
+after x treated & -0.0001*** (1.49e-5) \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+S.E. type & IID \\
+Observations & 54 \\
+R2 & 0.74343 \\
+Adj. R2 & 0.72804 \\
+\end{longtable}
+
+Interpreting the results:
+
+We have a constant value of 0.0004 deaths every week which is
+statistically significant at 1\% level and after x treated -0.0001 with
+significance level also at 1\%.
+
+So After the treatment we have a decrease in deaths of 0.0001.
+
+Small recap:
+
+\begin{itemize}
+\tightlist
+\item
+  the significance codes stands for p values \textless{} 0.01 *** , p
+  \textless{} 0.05 ** , p \textless{} 0.10 *)
+\item
+  More precisely, a study's defined significance level, denoted by
+  \(\alpha\) , is the probability of the study rejecting the null
+  hypothesis, given that the null hypothesis is true; and the p-value of
+  a result, p , is the probability of obtaining a result at least as
+  extreme, given that the null hypothesis is true.
+\end{itemize}
+
+But what does this mean?
+
+To have a better understanding we can run the regression using the
+logarithm, to get the variation
+
+\[ log(Y) = \beta_0 + \beta_1 \times \text{Treatment} + \beta_2 \times \text{Post} + \beta_3 \times \text{Treatment} \times \text{Post} + \epsilon \]
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& city\_regression\_pe.. & city\_regression\_pe.. \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dependent Var.: & pedestrianDeath & log(pedestrianDeath) \\
+& & \\
+Constant & 0.0004*** (6.07e-6) & -7.855*** (0.0159) \\
+after & -2.5e-6 (8.58e-6) & -0.0070 (0.0225) \\
+treated & 4.84e-7 (1.05e-5) & 0.0019 (0.0276) \\
+after x treated & -0.0001*** (1.49e-5) & -0.3406*** (0.0390) \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+S.E. type & IID & IID \\
+Observations & 54 & 54 \\
+R2 & 0.74343 & 0.79513 \\
+Adj. R2 & 0.72804 & 0.78284 \\
+\end{longtable}
+
+\hypertarget{interpreting-the-coefficients}{%
+\subparagraph{Interpreting the
+coefficients:}\label{interpreting-the-coefficients}}
+
+Method 1:
+
+\(\text% \Delta Y = (exp(\beta_3)-1) * 100
+\)
+
+The expected deaths are 100 ∗ \((exp(\beta_3)-1) \approx\) 40.50\%
+increase when after AND treated are equal to 1, holding everything else
+constant.
+
+Method 2:
+
+\(\text% \Delta Y = \beta_3 * 100
+\)
+
+The expected deaths are 100 ∗ \(beta_3 \approx\) 34\% increase when
+after AND treated are equal to 1, holding everything else constant.
+
+Now we can see that after the treatment we have a 34\% decrease in
+deaths in the treated city after reducing the speed in city 1
+
+Using the same on car crashes:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& city\_regression\_car & city\_regression\_c.. \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dependent Var.: & carCrash & log(carCrash) \\
+& & \\
+Constant & 0.0029*** (2.07e-5) & -5.837*** (0.0074) \\
+after & -3.92e-6 (2.93e-5) & -0.0011 (0.0105) \\
+treated & -2.62e-6 (3.58e-5) & -0.0010 (0.0128) \\
+after x treated & -0.0009*** (5.07e-5) & -0.3497*** (0.0181) \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+S.E. type & IID & IID \\
+Observations & 54 & 54 \\
+R2 & 0.93559 & 0.94928 \\
+Adj. R2 & 0.93172 & 0.94623 \\
+\end{longtable}
+
+We obtain similar results to pedestrianDeath regression
+
+\hypertarget{event-study}{%
+\subsubsection{Event Study}\label{event-study}}
+
+Now we are going to perform an Event study at city level to visually
+represent the results
+
+What it is an event study?
+
+\emph{An event study is a statistical method to assess the impact of an
+event (also referred to as a ``treatment'')}
+
+for reference:
+\url{https://lost-stats.github.io/Model_Estimation/Research_Design/event_study.html}
+
+My code will be in R, but you can use the code in python provided by
+this guy.
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\text{pedestrianDeath}\) is the dependent variable
+\item
+  \(\alpha\) is the intercept of the linear model
+\item
+  \(\beta\) is the slope of the linear model that describes the effect
+  of treatment
+\item
+  \(\epsilon_{i,t}\) represents the error terms, which are assumed to be
+  normally distributed with mean zero and constant variance
+\end{itemize}
+
+In simpler terms, the event study will provide a coefficient \(\beta\)
+for each time observation (could be days, months years\ldots)
+
+You should obtain something like this:
+
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+As you can notice from the values on the y-axis, it is not very
+comprehensible, since, luckily, not many people are dying every week
+from car crashes.
+
+The interpretation is that after the change in speed there are 0.00015
+deaths due to cars in the city treated with respect to the others
+controlled.
+
+As you can see the confidence intervals are quite large we can
+``control'' for other characteristics:
+
+\[ Y = \alpha + \beta \times After_t + \chi_{i} + \epsilon_{i_t} \] Here
+\(\chi\) stands for the vector of control variables that in this case
+are log(population) + log(size) + log(popDensity)
+
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+To have a better understanding, we can use the log to have the variation
+
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+The confidence intervals cross the 0 line before the treatment, so we
+can claim there is no effect before the treatment with respect to the
+point 0 (marked with dashed line)
+
+Using date fixed effects to keep into account unobserved characteristics
+
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+As you can see, the confidence intervals are way smaller when using
+fixed effects
+
+Doing the same for car crash
+
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-9-1.pdf}
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-9-2.pdf}
+\includegraphics{analysis_files/figure-latex/unnamed-chunk-9-3.pdf}
+
+Now we perform the study at station level, we analyze the treated
+stations against the non-treated ones. The treated one will assume value
+1 if are in city 1 and are not 4 and 7 (we saw that the speed was not
+altered in them).
+
+\hypertarget{station-level}{%
+\section{Station level}\label{station-level}}
+
+\hypertarget{whitin-the-same-city}{%
+\subsection{Whitin the same city}\label{whitin-the-same-city}}
+
+\hypertarget{difference-in-difference}{%
+\subsubsection{Difference-in-difference}\label{difference-in-difference}}
+
+Now we perform the analysis in the same city, considering all the
+stations as treated, except for 4 and 7, that are the controls.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& city\_regression\_p.. & city\_regression\_pe.. \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dependent Var.: & pedestrianDeath & log(pedestrianDeath) \\
+& & \\
+Constant & 0.0004*** (1.71e-5) & -7.840*** (0.0509) \\
+after & -2.39e-5 (2.42e-5) & -0.0640 (0.0720) \\
+treated & -1.86e-5 (1.91e-5) & -0.0412 (0.0570) \\
+after x treated & -0.0001*** (2.7e-5) & -0.3792*** (0.0805) \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+& \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+S.E. type & IID & IID \\
+Observations & 180 & 180 \\
+R2 & 0.47763 & 0.51265 \\
+Adj. R2 & 0.46872 & 0.50434 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& city\_regression\_ca.. & city\_regression\_c.. \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dependent Var.: & carCrash & log(carCrash) \\
+& & \\
+Constant & 0.0029*** (4.58e-5) & -5.858*** (0.0194) \\
+after & 4.24e-5 (6.48e-5) & 0.0144 (0.0275) \\
+treated & 6.54e-5 (5.12e-5) & 0.0229 (0.0217) \\
+after x treated & -0.0011*** (7.25e-5) & -0.4822*** (0.0307) \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+S.E. type & IID & IID \\
+Observations & 180 & 180 \\
+R2 & 0.88244 & 0.88547 \\
+Adj. R2 & 0.88044 & 0.88351 \\
+\end{longtable}
+
+\hypertarget{interpreting-the-results}{%
+\subparagraph{Interpreting the
+results:}\label{interpreting-the-results}}
+
+We have a 38\% decrease in deaths and 48\% Decrease in car crashes in
+the treated stations in Azzurropoli, using method 2
+
+\hypertarget{event-study-1}{%
+\subsubsection{Event study}\label{event-study-1}}
+
+\begin{center}\includegraphics{analysis_files/figure-latex/unnamed-chunk-11-1} \end{center}
+
+\begin{center}\includegraphics{analysis_files/figure-latex/unnamed-chunk-11-2} \end{center}
+
+\end{document}
