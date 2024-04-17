@@ -6,3 +6,4 @@ old
 .RDATA
 .Rhistory
 .DS_Store
+*.log
