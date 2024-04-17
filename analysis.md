@@ -83,6 +83,8 @@ But what does this mean?
 To have a better understanding we can run the regression using the
 logarithm, to get the variation
 
+$$ log(Y) = \beta_0 + \beta_1 \times \text{Treatment} + \beta_2 \times \text{Post} + \beta_3 \times \text{Treatment} \times \text{Post} + \epsilon $$
+
 |                                | city_regression_pe..                     | city_regression_pe..                     |
 |:-------------------------------|:-----------------------------------------|:-----------------------------------------|
 | Dependent Var.:                | pedestrianDeath                          | log(pedestrianDeath)                     |
@@ -96,6 +98,24 @@ logarithm, to get the variation
 | Observations                   | 54                                       | 54                                       |
 | R2                             | 0.74343                                  | 0.79513                                  |
 | Adj. R2                        | 0.72804                                  | 0.78284                                  |
+
+Interpreting the coefficients:
+
+Method 1:
+
+The expected deaths are 100 ∗ $(exp(\beta_3)-1)$ can be interpreted as
+the percentage change in Y when is after AND treated , holding
+everything else constant.
+
+In this case 100 ∗ $(exp(0.34)-1) \approx$ 40.49476 % increase
+
+Method 2:
+
+In this case 100 ∗ $0.34 \approx$ 34.49476 % increase
+
+100 ∗ $\beta_3$ can be interpreted as the percentage change in Y when is
+after AND treated , holding everything else constant. Works better if
+$\beta_3$ is close to 0
 
 Now we can see that after the treatment we have a 34% decrease in deaths
 in the treated city after reducing the speed in city 1
@@ -148,7 +168,7 @@ each time observation (could be days, months years…)
 
 You should obtain something like this:
 
-![](analysis_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 As you can notice from the values on the y-axis, it is not very
 comprehensible, since, luckily, not many people are dying every week
@@ -165,11 +185,11 @@ $$ pedestrianDeath = \alpha + \beta \times After_t + \chi_{i} + \epsilon_{i_t} $
 Here $\chi$ stands for the vector of control variables that in this case
 are log(population) + log(size) + log(popDensity)
 
-![](analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 To have a better understanding, we can use the log to have the variation
 
-![](analysis_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](analysis_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 The confidence intervals cross the 0 line before the treatment, so we
 can claim there is no effect before the treatment with respect to the
@@ -177,14 +197,14 @@ point 0 (marked with dashed line)
 
 Using date fixed effects to keep into account unobserved characteristics
 
-![](analysis_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](analysis_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 As you can see, the confidence intervals are way smaller when using
 fixed effects
 
 Doing the same for car crash
 
-![](analysis_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->![](analysis_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->![](analysis_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
+![](analysis_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](analysis_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->![](analysis_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->
 
 Now we perform the study at station level, we analyze the treated
 stations against the non-treated ones. The treated one will assume value
@@ -275,4 +295,4 @@ treated stations in Azzurropoli
 
 ### Event study
 
-<img src="analysis_files/figure-gfm/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /><img src="analysis_files/figure-gfm/unnamed-chunk-11-2.png" style="display: block; margin: auto;" />
+<img src="analysis_files/figure-gfm/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /><img src="analysis_files/figure-gfm/unnamed-chunk-12-2.png" style="display: block; margin: auto;" />
